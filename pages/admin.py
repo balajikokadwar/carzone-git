@@ -5,7 +5,7 @@ from django.utils.html import format_html
 # Register your models here.
 class AdminTeams(admin.ModelAdmin):
     def image(self,object):
-        return format_html('<img src="{}" width=40 style:"border-radius: 100px;" />'.format(object.photo.url))
+        return format_html('<img src="{}" width="40" style="border-radius: 100px;" />'.format(object.photo.url))
 
     image.short_description = 'Photo'
     list_filter = ('designation',)

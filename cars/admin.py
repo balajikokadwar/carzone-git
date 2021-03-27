@@ -8,7 +8,7 @@ class AdminCars(admin.ModelAdmin):
 
     thumbnail.short_description = 'Car Photo'
     list_display = ('car_title','city' ,'thumbnail' ,'color', 'model', 'year', 'body_style', 'fuel_type', 'is_featured')
-    list_display_links = ('thumbnail',)
+    list_display_links = ('thumbnail','car_title')
     list_editable = ('is_featured',)
     search_fields = ('car_title','city','model')
     list_filter = ('car_title','city','color', 'model', 'fuel_type')

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 Template_Dirs = os.path.join(BASE_DIR,'templates')
@@ -23,7 +23,7 @@ Static_Dirs = os.path.join(BASE_DIR,'static')
 SECRET_KEY = 'nzwtr#8&$u2q2d1z@alhc9$&0-9(6_-ge9h23c$x=ou&+61xht'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'carzone.urls'
@@ -90,12 +91,14 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+DATABASES = {'default' : dj_database_url.config(default='postgres://balaji:balaji123@localhost/db.sqlite3')}
 
 
 # Password validation
@@ -163,3 +166,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pythononlineclasses1@gmail.com'
 EMAIL_HOST_PASSWORD = 'Python@123'
 EMAIL_USE_TLS = True
+
+#Whitenoise setting : It is used to hold static files
+STATISFILES_STORAGE = 'whitenoise.storage.CompressedMainfeststaticFilesStorage'
